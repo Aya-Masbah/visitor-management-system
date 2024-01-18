@@ -1,12 +1,11 @@
 package com.example.vms.models;
 
-import java.util.List;
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 
 @Entity
 public class Host {
@@ -21,8 +20,6 @@ public class Host {
     private String phoneNumber;
     private String email;
 
-    @OneToMany(mappedBy = "host")
-    private List<Visitor> visitors;
 
     // Constructors
     public Host() {}
@@ -81,12 +78,5 @@ public class Host {
 		this.email = email;
 	}
 
-	public List<Visitor> getVisitors() {
-		return visitors;
-	}
-
-	public void setVisitors(List<Visitor> visitors) {
-		this.visitors = visitors;
-	}
 
 }

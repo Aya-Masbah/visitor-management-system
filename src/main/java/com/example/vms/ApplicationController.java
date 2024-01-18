@@ -12,6 +12,13 @@ public class ApplicationController {
 	public String homePage() {
 		return "index";
 	}
-	
+	@GetMapping("/_layout")
+    public String goHome(){
+        return "_layout";
+    }
+	@GetMapping("visitor")
+    public String visitor(){
+        return "/visitor/index";
+    }
 
 }
