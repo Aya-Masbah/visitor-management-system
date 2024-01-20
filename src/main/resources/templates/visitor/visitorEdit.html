@@ -75,10 +75,10 @@
                      <label for="hostAdd" class="control-label col-sm-4">Host:</label>
                      <div class="col-sm-6">
                        <select class="form-control" id="hostAdd" name="hostid">
-                                    <option>-SELECT-</option>
+                                    <option value="">-SELECT-</option>
                                     <option th:each="host : ${hosts}"
                                             th:value="${host.id}"
-                                            th:selected="${host.id}==${visitor.hostid} ? True: False"
+                                            th:selected="${host.id eq visitor.hostid}"
                                             th:text="${host.lastName}">
                                     </option>
                                 </select>

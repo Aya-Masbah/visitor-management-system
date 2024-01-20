@@ -49,6 +49,7 @@ public class VisitorController {
 	 @GetMapping("/visitor/visitorEdit/{id}")
 	    public String editVisitor(@PathVariable Long id, Model model){
 		    Visitor visitor = visitorService.getById(id);
+		    addModelAttribute(model);
 		    model.addAttribute("visitor", visitor);
 	        return "visitor/visitorEdit";
 	    }
