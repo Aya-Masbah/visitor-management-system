@@ -20,5 +20,6 @@ public class ApplicationController {
     public String visitor(){
         return "/visitor/index";
     }
+	
 
 }
