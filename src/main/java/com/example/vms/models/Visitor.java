@@ -31,7 +31,10 @@ public class Visitor {
     private Long hostid;
     
     @ManyToOne
+    @JoinColumn(name="eventid", insertable=false, updatable=false)
     private Event event;
+    private Long eventid;
+    
 
     @OneToOne(mappedBy = "visitor" , cascade = CascadeType.ALL, orphanRemoval = true)
     private Badge badge;
@@ -124,6 +127,14 @@ public class Visitor {
 
 	public void setHostid(Long hostid) {
 		this.hostid = hostid;
+	}
+	
+	public Long getEventid() {
+		return eventid;
+	}
+
+	public void setEventid(Long eventid) {
+		this.eventid = eventid;
 	}
 
 	
