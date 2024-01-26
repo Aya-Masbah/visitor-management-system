@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="_layout.html">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="_layout.html">
 
 <head>
     <title>Add New Badge</title>
@@ -16,34 +14,31 @@
                         <form id="badgeForm" th:action="@{/badge/badges}" method="post" enctype="multipart/form-data">
                             <section class="panel">
                                 <header class="panel-heading">
-                                   Add New Badge
+                                    Add New Badge
                                 </header>
                                 <div class="panel-body">
-                                 
-                                    <div class="form-group">
-                                    <label for="eventAdd" class="control-label col-sm-4">Event Name:</label>
-                                   <div class="col-sm-6">
-                                   <select class="form-control" id="eventAdd" name="eventid">
-                                    <option value="">-SELECT-</option>
-                                    <option th:each="event : ${events}"
-                                            th:value="${event.id}"
-                                            th:text="${event.eventName}">
-                                    </option>
-                                </select>
 
                                     <div class="form-group">
-                                    <label for="visitorAdd" class="control-label col-sm-4">Visitor Name:</label>
-                                    <div class="col-sm-6">
-                                      <select class="form-control" id="visitorAdd" name="visitorid">
-                                    <option>-SELECT-</option>
-                                    <option th:each="visitor : ${visitors}"
-                                            th:value="${visitor.id}"
-                                            th:text="${visitor.lastName}">
-                                    </option>
-                                </select>
+                                        <label for="eventAdd" class="control-label col-sm-4">Event Name:</label>
+                                        <div class="col-sm-6">
+                                            <select class="form-control" id="eventAdd" name="eventid">
+                                                <option value="">-SELECT-</option>
+                                                <option th:each="event : ${events}" th:value="${event.id}"
+                                                    th:text="${event.eventName}"></option>
+                                            </select>
+                                        </div>
+                                    </div>
 
-                           </div>
-                     </div> 
+                                    <div class="form-group">
+                                        <label for="visitorAdd" class="control-label col-sm-4">Visitor Name:</label>
+                                        <div class="col-sm-6">
+                                            <select class="form-control" id="visitorAdd" name="visitorid">
+                                                <option>-SELECT-</option>
+                                                <option th:each="visitor : ${visitors}" th:value="${visitor.id}"
+                                                    th:text="${visitor.lastName}"></option>
+                                            </select>
+                                        </div>
+                                    </div>
 
                                     <div class="form-group">
                                         <label for="eventLogo" class="control-label col-sm-4">Event Logo:</label>

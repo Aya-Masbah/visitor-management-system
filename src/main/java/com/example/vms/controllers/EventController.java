@@ -52,8 +52,9 @@ public class EventController {
         return "redirect:/event/events";
     }
 
-    @RequestMapping(value = "/event/events/update/{id}", method = { RequestMethod.GET, RequestMethod.PUT })
-    public String update(Event event) {
+    @RequestMapping(value = "/event/events/update/{id}", method = { RequestMethod.POST, RequestMethod.PUT })
+    public String update(@PathVariable Long id,Event event) {
+    	event.setId(id);
         eventService.save(event);
         return "redirect:/event/events";
     }

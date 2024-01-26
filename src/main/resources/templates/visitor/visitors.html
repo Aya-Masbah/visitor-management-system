@@ -70,8 +70,8 @@
             <td th:text="${visitor.reasonForVisit}">Reason for Visit</td>
             <td th:text="${visitor.arrivalDateTime}">Arrival Date Time</td>
             <td th:text="${visitor.departureDateTime}">Departure Date Time</td>
-            <td th:text="${visitor.hostid}">Host</td>
-            <td th:text="${visitor.eventid}">Event</td>
+            <td th:text="${visitor.host.lastName}">Host</td>
+            <td th:text="${visitor.event != null ? visitor.event.eventName : 'N/A'}">Event</td>
             <!-- Ajoutez d'autres colonnes en fonction de vos besoins -->
             <td>
                 <div class="btn-group">

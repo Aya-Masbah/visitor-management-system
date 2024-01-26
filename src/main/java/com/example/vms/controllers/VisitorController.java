@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 import com.example.vms.models.Visitor;
-import com.example.vms.services.BadgeService;
+import com.example.vms.services.EventService;
 import com.example.vms.services.HostService;
 import com.example.vms.services.VisitorService;
 
@@ -25,7 +25,7 @@ public class VisitorController {
 	@Autowired
 	private HostService hostService;
 	@Autowired
-	private BadgeService eventService;
+	private EventService eventService;
 	
 	public  Model addModelAttribute(Model model){
 		model.addAttribute("visitors", visitorService.findAll());

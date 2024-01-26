@@ -1,10 +1,13 @@
 package com.example.vms.models;
 
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -14,77 +17,118 @@ public class Badge {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String eventName;
     private String visitorName;
-    private byte[] eventLogo;
-    private byte[] visitorPhoto;
     private String barcodeOrQrCode;
-    
-    @OneToOne
-    @JoinColumn(name = "visitor_id")
-    private Visitor visitor;
-    
+
+
     @OneToOne(mappedBy = "badge")
     private Security security;
+    
+    @ManyToOne
+    @JoinColumn(name="visitorid", insertable=false, updatable=false)
+    private Visitor visitor;
+    private Long visitorid;
+    
+    @ManyToOne
+    @JoinColumn(name="eventid", insertable=false, updatable=false)
+    private Event event;
+    private Long eventid;
+    
+    @Column(nullable = true, length = 64)
+    private String eventLogo;
+    
+    @Column(nullable = true, length = 64)
+    private String visitorPhoto;
+    
+    // Getters et setters
 
     // Constructors
     public Badge() {}
 
-    public Badge(String eventName, String visitorName, byte[] eventLogo, byte[] visitorPhoto, String barcodeOrQrCode) {
-        this.eventName = eventName;
+    public Badge(String visitorName,String eventLogo, String visitorPhoto, String barcodeOrQrCode) {
         this.visitorName = visitorName;
         this.eventLogo = eventLogo;
         this.visitorPhoto = visitorPhoto;
         this.barcodeOrQrCode = barcodeOrQrCode;
     }
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getEventName() {
-		return eventName;
-	}
+    public String getVisitorName() {
+        return visitorName;
+    }
 
-	public void setEventName(String eventName) {
-		this.eventName = eventName;
-	}
+    public void setVisitorName(String visitorName) {
+        this.visitorName = visitorName;
+    }
 
-	public String getVisitorName() {
-		return visitorName;
-	}
+    public String getEventLogo() {
+        return eventLogo;
+    }
 
-	public void setVisitorName(String visitorName) {
-		this.visitorName = visitorName;
-	}
+    public void setEventLogo(String  eventLogo) {
+        this.eventLogo = eventLogo;
+    }
 
-	public byte[] getEventLogo() {
-		return eventLogo;
-	}
+    public String  getVisitorPhoto() {
+        return visitorPhoto;
+    }
 
-	public void setEventLogo(byte[] eventLogo) {
-		this.eventLogo = eventLogo;
-	}
+    public void setVisitorPhoto(String visitorPhoto) {
+        this.visitorPhoto = visitorPhoto;
+    }
 
-	public byte[] getVisitorPhoto() {
-		return visitorPhoto;
-	}
+    public String getBarcodeOrQrCode() {
+        return barcodeOrQrCode;
+    }
 
-	public void setVisitorPhoto(byte[] visitorPhoto) {
-		this.visitorPhoto = visitorPhoto;
-	}
+    public void setBarcodeOrQrCode(String barcodeOrQrCode) {
+        this.barcodeOrQrCode = barcodeOrQrCode;
+    }
 
-	public String getBarcodeOrQrCode() {
-		return barcodeOrQrCode;
-	}
+    public Visitor getVisitor() {
+        return visitor;
+    }
 
-	public void setBarcodeOrQrCode(String barcodeOrQrCode) {
-		this.barcodeOrQrCode = barcodeOrQrCode;
-	}
+    public void setVisitor(Visitor visitor) {
+        this.visitor = visitor;
+    }
 
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
+    }
+
+    public Security getSecurity() {
+        return security;
+    }
+
+    public void setSecurity(Security security) {
+        this.security = security;
+    }
     
+    public Long getVisitorid() {
+		return visitorid;
+	}
+
+	public void setVisitorid(Long visitorid) {
+		this.visitorid = visitorid;
+	}
+	
+	public Long getEventid() {
+		return eventid;
+	}
+
+	public void setEventid(Long eventid) {
+		this.eventid = eventid;
+	}
 }

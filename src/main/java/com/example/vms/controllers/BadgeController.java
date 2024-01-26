@@ -11,11 +11,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-
 import com.example.vms.models.Badge;
 import com.example.vms.services.VisitorService;
 import com.example.vms.services.BadgeService;
+import com.example.vms.services.EventService;
 
 @Controller
 public class BadgeController {
@@ -24,7 +23,8 @@ public class BadgeController {
 	@Autowired
 	private VisitorService visitorService;
 	@Autowired
-	private VisitorService eventService;
+	private EventService eventService;
+	
 	public  Model addModelAttribute(Model model){
 		model.addAttribute("badges", badgeService.findAll());
 		model.addAttribute("visitors", visitorService.findAll());
@@ -51,10 +51,12 @@ public class BadgeController {
 	 @GetMapping("/badge/badgeEdit/{id}")
 	    public String editBadge(@PathVariable Long id, Model model){
 		    Badge badge = badgeService.getById(id);
-		    addModelAttribute(model);
 		    model.addAttribute("badge", badge);
+		    addModelAttribute(model);
 	        return "badge/badgeEdit";
 	    }
+	 
+	 
 	 
 	@PostMapping(value="badge/badges")
 	public String save(Badge badge) {

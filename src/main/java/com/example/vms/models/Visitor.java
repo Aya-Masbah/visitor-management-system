@@ -1,14 +1,11 @@
 package com.example.vms.models;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
-
 import java.time.LocalDateTime;
 
 @Entity
@@ -24,6 +21,8 @@ public class Visitor {
     private String reasonForVisit;
     private LocalDateTime arrivalDateTime;
     private LocalDateTime departureDateTime;
+    
+    
 
     @ManyToOne
     @JoinColumn(name="hostid", insertable=false, updatable=false)
@@ -35,9 +34,6 @@ public class Visitor {
     private Event event;
     private Long eventid;
     
-
-    @OneToOne(mappedBy = "visitor" , cascade = CascadeType.ALL, orphanRemoval = true)
-    private Badge badge;
     // Constructors
     public Visitor() {}
 
@@ -119,6 +115,14 @@ public class Visitor {
 
 	public void setHost(Host host) {
 		this.host = host;
+	}
+	
+	public Event getEvent() {
+		return event;
+	}
+
+	public void setEvent(Event event) {
+		this.event = event;
 	}
 
 	public Long getHostid() {

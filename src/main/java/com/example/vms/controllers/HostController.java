@@ -36,6 +36,7 @@ public class HostController {
     @GetMapping("/host/hostEdit/{id}")
     public String editHost(@PathVariable Long id, Model model) {
         Host host = hostService.getById(id);
+        model.addAttribute("hosts", hostService.findAll());
         model.addAttribute("host", host);
         return "host/hostEdit";
     }
@@ -52,8 +53,9 @@ public class HostController {
         return "redirect:/host/hosts";
     }
 
-    @RequestMapping(value = "/host/hosts/update/{id}", method = { RequestMethod.GET, RequestMethod.PUT })
-    public String update(Host host) {
+    @RequestMapping(value = "/host/hosts/update/{id}", method = { RequestMethod.POST, RequestMethod.PUT })
+    public String update(@PathVariable Long id, Host host) {
+    	host.setId(id);
         hostService.save(host);
         return "redirect:/host/hosts";
     }
